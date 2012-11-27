@@ -1,0 +1,46 @@
+== Welcome to CF-Event Docs
+
+This is a small rails application which will explains about the instructions to deploy an application to Cloud Foundry using
+
+* Ruby environment
+* STS 
+
+== Prerequisites
+
++ Ruby 1.9.2-p180 should be installed through *rvm*.
+
++ *vmc* gem shoould be installed to deploy the app to Cloud Foundry.
+
+== Setting up the application locally
+
++ Clone the project
+
++ Go to the app root folder
+
++ Run *bundle install*
+
++ Run *rake assets:precompile*
+
++ Run *rails s* to start app locally
+
+== Deploy the app to Cloud Foundry
+
++ Run *bundle package*
+
++ In `config/environments/production.rb` file, modify the below line
+
+*config.serve_static_assets = false*
+
+to
+
+*config.serve_static_assets = true*
+
++ Run *rake assets:precompile*
+
++ Now push the app to Cloud Foundry using following command
+
+$ vmc push --runtime ruby19
+
++ Now push the app to Cloud Foundry using following command
+
+$ vmc push --runtime ruby19

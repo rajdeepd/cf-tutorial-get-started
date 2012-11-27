@@ -1,0 +1,122 @@
+<h2>Barebones Cloud Foundry Hello World #2 (using Spring Tool Suite)</h2>
+
+<p>
+	It’s pretty easy to get started with Cloud Foundry, but here’s also a 10 min barebones version we shared at JavaOne and will be sharing at Devoxx 2012 (record is 7 mins!)
+</p>
+
+<ol>
+	<li><strong>Sign up!</strong>
+		<ul>
+			<li>
+				If you do not have a Cloud Foundry account, sign up with this promo code: </br>
+				<a href="https://my.cloudfoundry.com/signup/cfindia">my.cloudfoundry.com/signup/cfindia</a>
+			</li>
+			<li>
+				If using your own laptop, make sure that you have Spring Tool Suite or Eclipse installed: <a href="http://www.springsource.org/sts">http://www.springsource.org/sts</a> (The instructions below are for STS)
+			</li>
+		</ul>
+	</li>
+	<li><strong>Install the Cloud Foundry plugin</strong>
+		<ul>
+			<li>Select <strong>Help > Dashboard</strong>, Click the <strong>Extensions tab</strong>, at the bottom left, type in “Cloud” in the Find field, then choose <strong>Cloud Foundry</strong> and click the <strong>Install</strong> button. Click on the prompted buttons until you are prompted to restart STS. Restart.</li>
+			<span style="margin-left: 30px;"><%= image_tag('sts/sts-cf-extension.png') %></span>
+			<li>
+				Once you restart STS, in the Servers window where it says “No servers available. Define a new server from the …” click on the “new server wizard” link. (If you don’t see a Servers window, go to <strong>Window>Show View>Servers or Other>Servers</strong>)
+			</li>
+			<span style="margin-left: 30px;"><%= image_tag('sts/sts_new_micsvr.jpg') %></span>
+		</ul>
+	</li>
+	<li>
+		From the list of folders, open VMware, choose Cloud Foundry, and click Next.
+		<%= image_tag('sts/sts_servtype_mic.jpg') %>
+	</li>
+	<li><strong>Login to Cloud Foundry</strong>
+		<ul>
+			<li>
+				You should be in the Account Information page where you will log in to your Cloud Foundry account.
+				<%= image_tag('sts/cf_eclipse_new_server_account.png') %>
+			</li>
+			<li>
+				If you just created a Cloud Foundry account, check your email for your temporary password.
+			</li>
+			<li>
+				If you cannot remember your password, recover it here <a href="https://my.cloudfoundry.com/passwd">https://my.cloudfoundry.com/passwd</a>
+			</li>
+			<li>
+				Enter your account email address and password and click on the Validate Account button (We recommend copying and pasting both your email (ID) and your password – This is where a lot of people get stuck). Doubleclick on your VMware Cloud Foundry server and make sure
+			</li>
+			<li>
+				If prompted to create security questions for the new Master Password, follow those steps.
+			</li>
+		</ul>
+	</li>
+	<li><strong>Creating a Sample Application</strong>
+		<ul>
+			<li>
+				If the center screen in STS is not on the Dashboard, click the Dashboard tab. (If you don’t see it at all, go to <strong>Help>Dashboard</strong>)
+			</li>
+			<li>
+				Under Create in the top left, choose <strong>Spring Template Project</strong>.
+			</li>
+			<li>
+				In the Template Selection window, select <strong>Spring MVC Project</strong>, click Next.
+				<%= image_tag('sts/spring_template_project_mvc.png') %>
+			</li>
+			<li>
+				Create a Project Name (eg. <strong>my-first-hello</strong>) and specify the top-level package (eg. <strong>com.mydotcom.hello01</strong>).
+			</li>
+			<li>
+				Click <strong>Finish</strong>.
+			</li>
+			<li>
+				You will now see your new folder listed in the Package Explorer at the left. (If you don’t see Package Explorer, go to <strong>Window>Show View>Package Explorer</strong>)
+			</li>
+		</ul>
+	</li>
+	<li><strong>Push app to Cloud Foundry using STS</strong>
+		<ul>
+			<li>
+				If you seen no alerts or <b><i><span style="color: red;">x</span></i></b>’s on your package, drag it down and drop into your VMware Cloud Foundry server listed in the bottom left Server window.
+			</li>
+			<li>
+				Once the app window opens, choose Next. <strong>For the Deployed URL, you need to create a unique URL prefix</strong> (eg. pusheeninspired – no periods or spaces) Click Next, <strong>make sure that your memory allocation is at least 512 or 1024</strong>, then click Finish and wait for the app to deploy.
+			</li>
+			<li>
+				Once you see the word <strong>“Deployed”</strong> next to your app in the Servers list, <strong>right click on the app and choose Open Home Page to test</strong>. Your Hello World sample app should appear. (<strong>If you see 404, doublecheck the console to make sure your app has fully deployed. If you see 404 after full deployment, click on your app on the server and increase the memory allocation</strong>).
+			</li>
+		</ul>
+	</li>
+	<li><strong>If you want to do something more fun</strong>
+		<ul>
+			<li>
+				You can edit your home.jsp file (in <strong>app name>src>main>webapp>WEB-INF>views>home.jsp</strong>
+			</li>
+			<li>
+				You can add something like this into your <strong>home.jsp</strong> file
+				<pre class="language-html">
+					<code class="language-html">
+<%="
+<html>
+  <head>
+    <title>Pusheen Inspired</title>
+  </head>
+  <body>
+    <h1>
+      Hello world! Be inspired!
+    </h1>
+    <img src=http://25.media.tumblr.com/tumblr_m7jhivE7DP1qhy6c9o5_250.gif>
+    <p>The time on the server is ${serverTime}. </p>
+  </body>
+</html>" %>
+					</code>
+				</pre>
+			</li>
+			<li>
+				If you make changes, then save and drag the changed app to the Cloud Foundry server again. If you succeed, you will see something like this: <a href="http://pusheeninspired.cloudfoundry.com">pusheeninspired.cloudfoundry.com</a>
+			</li>
+		</ul>
+	</li>
+	<li>
+		Voila’! Bare bare bones Cloud Foundry app push completed.
+	</li>
+</ol>
