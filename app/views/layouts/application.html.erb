@@ -18,6 +18,9 @@
               <li class="<%= params[:action].eql?('ruby_docs') ? 'selected' : '' %>">
                 <%= link_to 'Ruby', ruby_docs_path() %>
               </li>
+               <li class="<%= params[:action].eql?('ruby_docs') ? 'selected' : '' %>">
+                <%= link_to 'Rails', ruby_on_rails_docs_path() %>
+              </li>
               <li class="<%= params[:action].eql?('sts_docs') ? 'selected' : '' %>">
                 <%= link_to 'STS', sts_docs_path() %>
               </li>
