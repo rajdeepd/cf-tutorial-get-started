@@ -3,6 +3,8 @@ header-bg.jpg: header-bg-d97b2a8209eb3879d24a3b5863517c09.jpg
 header-bg/index.jpg: header-bg-d97b2a8209eb3879d24a3b5863517c09.jpg
 logo.png: logo-c35c4977d0c25a2078235cb33d171d37.png
 logo/index.png: logo-c35c4977d0c25a2078235cb33d171d37.png
+ruby_on_rails/rail_default_page.png: ruby_on_rails/rail_default_page-5eb940d61f4391adc3f7dcbd851ab8d0.png
+ruby_on_rails/rail_default_page/index.png: ruby_on_rails/rail_default_page-5eb940d61f4391adc3f7dcbd851ab8d0.png
 social_icons.png: social_icons-25676c6a19e72c74e2d6c873df05e296.png
 social_icons/index.png: social_icons-25676c6a19e72c74e2d6c873df05e296.png
 sts/cf_eclipse_new_server_account.png: sts/cf_eclipse_new_server_account-54b12f727c48fa303d905b749151cd71.png
