@@ -1,7 +1,8 @@
 EventDocs::Application.routes.draw do
 
-  get "ruby_docs" => "home#ruby_docs"
-  get "sts_docs" => "home#sts_docs"
+  get "sinatra" => "home#sinatra"
+  get "ruby_on_rails" => "home#ruby_on_rails"
+  get "spring_tool_suite" => "home#spring_tool_suite"
 
-  root :to => "home#ruby_docs"
+  root :to => "home#spring_tool_suite"
 end

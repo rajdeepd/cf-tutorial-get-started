@@ -1,0 +1,137 @@
+<h2>Barebones Cloud Foundry Hello World #1 (Ruby)</h2>
+
+<p>It is pretty easy to get started with Cloud Foundry, but here’s also a 10 min barebones version we shared at Code Camp 2012 (record is 7 mins!)</p>
+
+<ol>
+  <li><strong>Sign up!</strong>
+    <ul>
+      <li>
+        If you do not have a Cloud Foundry account, sign up with this promo code: </br>
+        <a href="https://my.cloudfoundry.com/signup/cfindia">my.cloudfoundry.com/signup/cfindia</a>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Install Ruby, Ruby Gems</strong>
+    <ul>
+      <li>If you have Windows, there are a few steps you need to take: <a href="http://docs.cloudfoundry.com/frameworks/ruby/installing-ruby.html#windows">http://docs.cloudfoundry.com/frameworks/ruby/installing-ruby.html#windows</a></li>
+      <li>If you have a Mac or Ubuntu, install Ruby via rvm. Please visit <a href="https://github.com/rajdeepd/bosh-oss-docs/blob/master/bosh/documentation/install_ruby_rvm.md" target="_blank">this page</a> for instructions.</li>
+    </ul>
+  </li>
+  <li><strong>Install <i>vmc</i> gem</strong>
+    <ul>
+      <li>If you have a Mac or Ubuntu and installed Ruby via <b>rvm</b>, then run the following command in terminal to install <b>vmc</b>
+				<pre class="terminal">
+$ gem install vmc
+				</pre>
+      </li>
+      <li>If you have a Windows or not installed ruby via <b>rvm</b>, then run the following command to install <b>vmc</b>
+				<pre class="terminal">
+$ sudo gem install vmc
+				</pre>
+        you will be prompted to enter your usual OS login password.</br>
+        If you get an error requiring updated ruby gems, then run the following commands in your terminal to get it done.
+				<pre class="terminal">
+$ sudo gem update --system
+$ sudo gem install vmc
+				</pre>
+      </li>
+
+    </ul>
+  </li>
+  <li><strong>Set the target of vmc</strong></br>
+    <ul>
+      <li>
+        Run the following command in terminal to set the target of vmc to cloudfoundry.com
+				<pre class="terminal">
+$ vmc target api.cloudfoundry.com
+				</pre>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Login to cloudfoundry.com through vmc</strong>
+    <ul>
+      <li>
+        If you just created a new Cloud Foundry account, check your email for your temporary password.
+      </li>
+      <li>
+        If you already have an account but forgot your password, reset it here: <a href="https://my.cloudfoundry.com/passwd">https://my.cloudfoundry.com/passwd</a>
+      </li>
+      <li>
+        To log in to cloudfoundry.com, run the following command in terminal.
+				<pre class="terminal">
+$ vmc login
+				</pre>
+        It will ask you for your email and password. <b>This is where a lot of people get stuck! If you are using a temporary password, it is recommend that change your password before login through vmc and then proceed login with the updated credentials.</b>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Creating a demo app in Ruby</strong></br>
+    Now you are ready to push a basic app. Here is a small sinatra app to use.
+    <ul>
+      <li>Create a folder with name <b><i>myrubyapp</i></b></li>
+      <li>Create a file with name <b><i>myrubyapp.rb</i></b> in the above created folder. And copy the below code snippet in this file and save it.
+		<pre>
+			<code class="language-ruby">
+              require 'rubygems'
+              require 'sinatra'
+
+              get '/' do
+              host = ENV['VMC_APP_HOST']
+              port = ENV['VMC_APP_PORT']
+              "Hello, yes this is CloudFoundry: #{host}:#{port}"
+              end
+            </code>
+  	</pre>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Pushing App to Cloud Foundry</strong>
+    <ul>
+      <li>
+        To push your app, first make sure that you are in your <b>myrubyapp</b> folder. Else do this by running the following command in terminal.
+				<pre class="terminal">
+$ cd &lt;path-to-folder&gt;
+				</pre>
+      </li>
+      <li>
+        Run the following command to push the application to Cloud Foundry.
+				<pre class="terminal">
+$ vmc push
+				</pre>
+      </li>
+      <li>
+        You will now get a series of questions as shown below. Respond to them based on your choice. If Your choice is in <b>Capital Letter</b>, then just press <b>Enter</b> to get the next response. <b>Remember that, when it asks you for Application Name, please provide the uniq application name of your own, so that it wont get conflict with the existing applications on Cloud Foundry.</b>
+				<pre class="terminal">
+Would you like to deploy from the current directory? [Yn]:
+Application Name: &lt;app-name&gt;
+Detected a Sinatra Application, is this correct? [Yn]:
+Application Deployed URL [&lt;app-name&gt;.cloudfoundry.com]:
+Memory reservation (128M, 256M, 512M, 1G, 2G) [128M]:
+How many instances? [1]:
+Create services to bind to ‘dogspeaking’? [yN]:
+Would you like to save this configuration? [yN]:
+				</pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    Now VMC will create and upload your app as follow.
+		<pre class="terminal">
+Creating Application: OK
+Uploading Application:
+Checking for available resources: OK
+Packing application: OK
+Uploading (0K): OK
+Push Status: OK
+Staging Application ‘dogspeaking’: OK
+Starting Application ‘dogspeaking’: OK
+		</pre>
+  </li>
+  <li>
+    Once this process is complete, copy and paste your new url into a browser.</br>
+    For Eg: <b>&lt;app-name&gt;.cloudfoundry.com</b>
+  </li>
+  <li>
+    Voila’! Bare bare bones Cloud Foundry app push completed.
+  </li>
+</ol>
