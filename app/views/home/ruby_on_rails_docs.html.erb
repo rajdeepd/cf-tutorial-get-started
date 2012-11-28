@@ -187,7 +187,7 @@ $ cd &lt;path-to-folder&gt;
     <li>
       Run the following command to push the application to Cloud Foundry.
 				<pre class="terminal">
-$ vmc push
+$ vmc push --runtime ruby19
 				</pre>
     </li>
     <li>
@@ -195,12 +195,12 @@ $ vmc push
 				<pre class="terminal">
 Would you like to deploy from the current directory? [Yn]:
 Application Name: &lt;app-name&gt;
-Detected a Sinatra Application, is this correct? [Yn]:
+Detected a Rails Application, is this correct? [Yn]:Y
 Application Deployed URL [&lt;app-name&gt;.cloudfoundry.com]:
 Memory reservation (128M, 256M, 512M, 1G, 2G) [128M]:
 How many instances? [1]:
-Create services to bind to ‘dogspeaking’? [yN]:
-Would you like to save this configuration? [yN]:
+Create services to bind to ‘dogspeaking’? [yN]:N
+Would you like to save this configuration? [yN]:y
 				</pre>
     </li>
   </ul>
