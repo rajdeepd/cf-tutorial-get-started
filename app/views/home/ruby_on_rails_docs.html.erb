@@ -1,0 +1,164 @@
+<h2>Barebones Cloud Foundry Hello World #1 (Ruby)</h2>
+
+<p>It is pretty easy to get started with Cloud Foundry, but here’s also a 10 min barebones version we shared at Code Camp 2012 (record is 7 mins!)</p>
+
+<ol>
+  <li><strong>Sign up!</strong>
+    <ul>
+      <li>
+        If you do not have a Cloud Foundry account, sign up with this promo code: </br>
+        <a href="https://my.cloudfoundry.com/signup/cfindia">my.cloudfoundry.com/signup/cfindia</a>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Install Ruby, Ruby Gems</strong>
+    <ul>
+      <li>If you have Windows, there are a few steps you need to take: <a href="http://docs.cloudfoundry.com/frameworks/ruby/installing-ruby.html#windows">http://docs.cloudfoundry.com/frameworks/ruby/installing-ruby.html#windows</a></li>
+      <li>If you have a Mac or Ubuntu, install Ruby via rvm. Please visit <a href="https://github.com/rajdeepd/bosh-oss-docs/blob/master/bosh/documentation/install_ruby_rvm.md" target="_blank">this page</a> for instructions.</li>
+    </ul>
+  </li>
+  <li><strong>Install <i>vmc</i> gem</strong>
+    <ul>
+      <li>If you have a Mac or Ubuntu and installed Ruby via <b>rvm</b>, then run the following command in terminal to install <b>vmc</b>
+				<pre class="terminal">
+$ gem install vmc
+				</pre>
+      </li>
+      <li>If you have a Windows or not installed ruby via <b>rvm</b>, then run the following command to install <b>vmc</b>
+				<pre class="terminal">
+$ sudo gem install vmc
+				</pre>
+        you will be prompted to enter your usual OS login password.</br>
+        If you get an error requiring updated ruby gems, then run the following commands in your terminal to get it done.
+				<pre class="terminal">
+$ sudo gem update --system
+$ sudo gem install vmc
+				</pre>
+      </li>
+
+    </ul>
+  </li>
+  <li><strong>Set the target of vmc</strong></br>
+    <ul>
+      <li>
+        Run the following command in terminal to set the target of vmc to cloudfoundry.com
+				<pre class="terminal">
+$ vmc target api.cloudfoundry.com
+				</pre>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Login to cloudfoundry.com through vmc</strong>
+    <ul>
+      <li>
+        If you just created a new Cloud Foundry account, check your email for your temporary password.
+      </li>
+      <li>
+        If you already have an account but forgot your password, reset it here: <a href="https://my.cloudfoundry.com/passwd">https://my.cloudfoundry.com/passwd</a>
+      </li>
+      <li>
+        To log in to cloudfoundry.com, run the following command in terminal.
+				<pre class="terminal">
+$ vmc login
+				</pre>
+        It will ask you for your email and password. <b>This is where a lot of people get stuck! If you are using a temporary password, it is recommend that change your password before login through vmc and then proceed login with the updated credentials.</b>
+      </li>
+    </ul>
+  </li>
+
+  <!-- Procedure for Simple rails App starts from here -->
+  <li><strong>Creating a demo app in Ruby on Rails</strong></li>
+  Now we are ready for our simple Ruby on Rails Application which will have two links in it without any database.
+
+  <ul>
+    <li>Create a rails application
+			    <pre class="terminal">
+$ rails new cloud_foundary --skip-activerecord
+				</pre>
+    </li>
+    <li> The above command will create a ruby on rails application with name cloud_foundary (in which database will not be required) and will also do  the bundle install.
+    </li>
+
+    <li>Get inside the application's directory
+		    	    <pre class="terminal">
+$ cd cloud_foundary
+				</pre>
+    </li>
+
+    <li> Start the webrick server(default with rails) by following command:-
+		    	   <pre class="terminal">
+$ rails s
+				</pre>
+      or
+				   	   <pre class="terminal">
+$ rails server
+				</pre>
+    </li>
+    <li>Open the url provided by the webrick , and should see rails default page.
+      <%= image_tag('ruby_on_rails/rail_default_page.png') %>
+    </li>
+
+    <li>Remove the above default file from the application
+          <pre class="terminal">
+$ rm public/index.html
+				</pre>
+    </li>
+
+    <li>For rapidly developing web applications we will add <b>Bootstrap</b> in our application. For installation click
+      <a href="https://github.com/seyhunak/twitter-bootstrap-rails">here</a>
+
+    </li>
+
+    <li>Generate controller in the application. Here we will generate controller with name <i>Home</i>
+        <pre class="terminal">
+$ rails g controller Home
+				</pre>
+    </li>
+
+
+    <li>Add an action in the above generated controller
+
+		<pre>
+			<code class="language-ruby">
+              class HomeController < ApplicationController
+
+              def link_one
+
+              end
+
+
+              end
+
+            </code>
+  	</pre>
+    </li>
+
+    <li> Add following lines in config/routes :-
+        <pre>
+			<code class="language-ruby">
+
+              get "home/link_one"
+
+            </code>
+  	</pre>
+
+
+    </li>
+
+    <li> We need to add view for individual action. Views are to be added in app/view/home directory, view file name
+      should be the same as of the actions name with extension <i>.html.erb</i>. For this application the view files name should be
+      link_one.html.erb. And it should be present in app/views/home directory.
+    </li>
+
+    <li> In link_one.html.erb put the following code:-
+        <pre>
+			<code class="language-ruby">
+              Hello World from action_one
+            </code>
+  	</pre>
+
+    </li>
+
+    <li>Restart the webrick server and run the application</li>
+  </ul>
+</ol>
