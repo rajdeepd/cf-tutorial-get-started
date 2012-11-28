@@ -116,6 +116,13 @@ $ rm public/index.html
 
   </li>
 
+  <li>After installing the bootstrap and its dependencies run the follwing command
+     <pre class="terminal">
+$ rails g bootstrap:layout application fluid
+				</pre>
+
+  </li>
+
   <li>Generate controller in the application. Here we will generate controller with name <i>Home</i>
         <pre class="terminal">
 $ rails g controller Home
@@ -145,6 +152,7 @@ $ rails g controller Home
 			<code class="language-ruby">
 
               get "home/link_one"
+              root :to => "home#link_one"
 
             </code>
   	</pre>
