@@ -118,7 +118,7 @@ $ rm public/index.html
 
   </li>
 
-  <li>After installing the bootstrap and its dependencies run the follwing command
+  <li>After installing the bootstrap and its dependencies run the following command
      <pre class="terminal">
 $ rails g bootstrap:layout application fluid
 				</pre>
@@ -185,9 +185,35 @@ $ cd &lt;path-to-folder&gt;
 				</pre>
     </li>
     <li>
+      Before pushing any Rails 3.1 applications or above, we need to do the following things.
+    </li>
+    <li>
+      Bundle Your packages.
+      Packages needs to be bundled before pushing the application to Cloud Foundry.
+      <pre class="terminal">
+$ bundle package
+
+$ bundle install
+	  </pre>
+      This will compress your gems and package into <b>vendor/cache</b> folder, so those gem files are served in Cloud Foundry.
+    </li>
+    <li>
+      <b>Precompiling Assets</b></br>
+         Assets Precompile is a new property of rails 3.1 or above, where every assets like <b>css, javascripts and images</b> are compiled into <b>public/assets</b> and will be server in side the application. Do that by executing the following command.
+      <pre class="terminal">
+$ bundle exec rake assets:precompile
+	  </pre>
+    </li>
+    <li>
+      To push your app, first make sure that you are in your <b>myrubyapp</b> folder. Else do this by running the following command in terminal.
+				<pre class="terminal">
+$ cd &lt;path-to-folder&gt;
+				</pre>
+    </li>
+    <li>
       Run the following command to push the application to Cloud Foundry.
 				<pre class="terminal">
-$ vmc push
+$ vmc push --runtime ruby19
 				</pre>
     </li>
     <li>
@@ -195,12 +221,12 @@ $ vmc push
 				<pre class="terminal">
 Would you like to deploy from the current directory? [Yn]:
 Application Name: &lt;app-name&gt;
-Detected a Sinatra Application, is this correct? [Yn]:
+Detected a Rails Application, is this correct? [Yn]:Y
 Application Deployed URL [&lt;app-name&gt;.cloudfoundry.com]:
 Memory reservation (128M, 256M, 512M, 1G, 2G) [128M]:
 How many instances? [1]:
-Create services to bind to ‘dogspeaking’? [yN]:
-Would you like to save this configuration? [yN]:
+Create services to bind to ‘dogspeaking’? [yN]:N
+Would you like to save this configuration? [yN]:y
 				</pre>
     </li>
   </ul>
