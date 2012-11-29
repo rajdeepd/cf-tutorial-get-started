@@ -19,9 +19,11 @@
 </li>
 <li><strong>Install Rails</strong>
   <ul>
+    <li>
     <pre class="terminal">
 $ gem install rails
     </pre>
+    </li>
   </ul>
 </li>
 <li><strong>Install <i>vmc</i> gem</strong>
@@ -134,14 +136,13 @@ $ rails g controller Home
 
 		<pre>
 			<code class="language-ruby">
-              class HomeController < ApplicationController
+<span class="elements">class</span> <span class="attributes"> HomeController</span>  <span class="elements"><</span>  <span class="attributes">ApplicationController</span>
 
-              def link_one
+    <span class="elements">def</span> <span class="attributes"> link_one</span>
 
-              end
+    <span class="end">end</span>
 
-
-              end
+<span class="end">end</span>
 
             </code>
   	</pre>
@@ -150,9 +151,8 @@ $ rails g controller Home
   <li> Add following lines in config/routes :-
         <pre>
 			<code class="language-ruby">
-
-              get "home/link_one"
-              root :to => "home#link_one"
+<span class="elements">get</span> <span class="attributes">"home/link_one"</span>
+<span class="elements">root :to <span class="end">=></span> <span class="attributes">"home#link_one" </span>
 
             </code>
   	</pre>
@@ -168,7 +168,7 @@ $ rails g controller Home
   <li> In link_one.html.erb put the following code:-
         <pre>
 			<code class="language-ruby">
-              Hello World from action_one
+              <span class="msg">Hello World from action_one </span>
             </code>
   	</pre>
 
@@ -179,7 +179,7 @@ $ rails g controller Home
 <li><strong>Pushing App to Cloud Foundry</strong>
   <ul>
     <li>
-      To push your app, first make sure that you are in your <b>myrubyapp</b> folder. Else do this by running the following command in terminal.
+      To push your app, first make sure that you are in your <b>cloud_foundary</b> folder. Else do this by running the following command in terminal.
 				<pre class="terminal">
 $ cd &lt;path-to-folder&gt;
 				</pre>
