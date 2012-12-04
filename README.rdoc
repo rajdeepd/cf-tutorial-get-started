@@ -1,46 +1,46 @@
-== Welcome to CF-Event Docs
+== Get Started with CF-Tutorial
 
-This is a small rails application which will explains about the instructions to deploy an application to Cloud Foundry using
+This is a small Rails application which will explains about the instructions to deploy an application to Cloud Foundry using
 
 * Ruby environment
 * STS 
 
 == Prerequisites
 
-+ Ruby 1.9.2-p180 should be installed through *rvm*.
+* Ruby 1.9.2-p180 should be installed through *rvm*.
 
-+ *vmc* gem shoould be installed to deploy the app to Cloud Foundry.
+* *vmc* gem should be installed to deploy the app to Cloud Foundry.
 
 == Setting up the application locally
 
-+ Clone the project
+* Clone the project
 
-+ Go to the app root folder
+* Go to the app root folder
 
-+ Run *bundle install*
+* Run <tt>bundle install</tt>
 
-+ Run *rake assets:precompile*
+* Run <tt>rake assets:precompile</tt>
 
-+ Run *rails s* to start app locally
+* Run <tt>rails s</tt> to start app locally
 
 == Deploy the app to Cloud Foundry
 
-+ Run *bundle package*
+* Run <tt>bundle package</tt>
 
-+ In `config/environments/production.rb` file, modify the below line
+* In `config/environments/production.rb` file, modify the below line
 
-*config.serve_static_assets = false*
+    config.serve_static_assets = false
 
-to
+  to
 
-*config.serve_static_assets = true*
+    config.serve_static_assets = true
 
-+ Run *rake assets:precompile*
+* Run <tt>rake assets:precompile</tt>
 
-+ Now push the app to Cloud Foundry using following command
+* Now push the app to Cloud Foundry using following command
 
-$ vmc push --runtime ruby19
+    $ vmc push --runtime ruby19
 
-+ Now push the app to Cloud Foundry using following command
+* Now push the app to Cloud Foundry using following command
 
-$ vmc push --runtime ruby19
+    $ vmc push --runtime ruby19
